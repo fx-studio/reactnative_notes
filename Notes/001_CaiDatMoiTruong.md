@@ -204,7 +204,7 @@ Bạn có thể chọn template mặc định hoặc theo các template mà gói
 
 ![004](../_img/004.png)
 
-> Gói xử dụng với Expo nên bạn cũng cần phải chú ý vì sẽ bị giới hạn các tính năng trong gói cung cấp. Có thời gian sẽ tìm hiểu tiếp.
+> Khi bạn dùng với Expo thì bạn cũng cần phải chú ý. Vì sẽ bị giới hạn các tính năng trong gói cung cấp. Có thời gian sẽ tìm hiểu tiếp.
 
 
 
