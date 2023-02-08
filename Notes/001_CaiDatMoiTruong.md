@@ -188,7 +188,7 @@ Click vào cửa sổ này và nhấn phím “D” trên bàn phím. Lúc này 
 
 > Hiện tại, mình lỗi chỗ này rồi nên chưa khám phá trình Debug như thế nào.
 
-## Sử dụng template để tạo ứng dụng
+## Sử dụng Expo để tạo ứng dụng với các template
 
 Truy cập vào đây: https://github.com/expo/create-react-native-app
 
