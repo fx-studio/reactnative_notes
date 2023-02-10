@@ -1,5 +1,5 @@
 {
-  "name": "FirstApp",
+  "name": "BasicComponent",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,11 +7,7 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest",
-    "npm:clean": "rm -rf node_modules && npm cache clean && npm install",
-    "yarn:clean": "rm -rf node_modules && yarn cache clean --force && yarn install",
-    "android:clean": "cd android && ./gradlew clean && ./gradlew cleanBuildCache && cd ..",
-    "ios:clean": "cd ios && xcodebuild clean && rm -rf ~/Library/Caches/CocoaPods && rm -rf Pods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && pod cache clean --all && pod deintegrate && pod setup && pod install && cd .."
+    "test": "jest"
   },
   "dependencies": {
     "react": "18.2.0",
