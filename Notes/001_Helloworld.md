@@ -19,7 +19,7 @@ Mình chọn file `*.tsx` và đặt tên `NewApp.tsx`.
 
 Tiếp theo, bạn tiến hành `import` nhũng thứ cần thiết vào file **NewApp** nhóe.
 
-```react
+```js
 import React from "react";
 import { Text, View } from "react-native";
 ```
@@ -33,7 +33,7 @@ Trong đó:
 
 Theo tư tưởng của React thì tất cả đều là Component. Do đó, thành phần gốc của một màn hình đơn giản như bài này, bạn có thể chọn một Component đơn giản. Ví dụ như sau:
 
-```react
+```js
 const NewApp = () => {
     return(
         <View>
@@ -54,7 +54,7 @@ Trong đó:
 
 Với ví dụ, bạn sẽ có `style` là thuộc tính cho `View`.
 
-```react
+```js
 const NewApp = () => {
     return(
         <View
@@ -73,7 +73,7 @@ const NewApp = () => {
 
 Tiếp theo, bạn sẽ thêm các Component con cho Component cha. Với ví dụ Hello world đơn giản như vậy, ta sẽ lựa chọn `<Text></Text>`.
 
-```react
+```js
 const NewApp = () => {
     return(
         <View
@@ -100,7 +100,7 @@ Nhiệm vụ của bạn khá đơn giản: "cập nhật giá trị cho State".
 
 Ta có code ví dụ như sau:
 
-```react
+```js
 const NewApp = () => {
 
     const [count, setCount] = useState(0);
@@ -148,13 +148,13 @@ Bạn có 2 phần:
 
 Cuối cùng, bạn đăng ký NewApp của bạn Component chính cho cả ứng dụng. Tại file `index.js`, bạn thên import cho NewApp nha.
 
-```react
+```js
 import NewApp from './NewApp';
 ```
 
 Tiếp theo, bạn sẽ đăng ký với AppRegistry như sau:
 
-```react
+```js
 AppRegistry.registerComponent(appName, () => NewApp);
 ```
 
