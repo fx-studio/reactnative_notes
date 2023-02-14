@@ -162,6 +162,66 @@ Trong đó, AppRegisty sẽ có tham số mới là NewApp.Tới đây thì bấ
 
 ![007](../_img/007.png)
 
+## Debugs
+
+Bạn sử dụng cú pháp sau trong code để log nhóe
+
+```js
+console.log("Hello tui nè!");
+```
+
+Về log sẽ hiện ra ở Terminal Metro nhóe!
+
+![008](../_img/008.png)
+
+> Khúc này dễ có lỗi lắm. Cẩn thận nhóe!
+
+## Build App
+
+### iOS App
+
+Sử dụng lệnh:
+
+```js
+npx react-native run-ios
+```
+
+Hầu như việc chạy với iOS thì khá đơn giản và không có lỗi gì xảy ra. Cứ thế mà chạy nhóe
+
+### Android App
+
+Sử dụng lệnh:
+
+```js
+npx react-native run-android
+```
+
+Với Android thì phức tạp hơn. Một phần bạn là dev iOS thì các tool và môi trường JAVA & Android hầu như cài mới từ đâu. Nó rất tốn tài nguyên. 
+
+* Hãy tải Android Studio mới nhất và Android SDK với version 11 trở lên.
+* Tạo một Emulator xịn sò nhất nhóe. Nhớ thêm RAM & SSD nhiều cho nó. Tránh trường hợp thiếu bộ nhớ cho máy ảo mà cài không được
+* Tạo và thêm các biến môi trường cho JAVA_HOME & ANDROID_HOME. Bạn hãy edit thêm vào bash file nhóe (`.bashrc` hoặc `.zshrc`). Tham khảo:
+
+```
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export JAVA_HOME=$(/usr/libexec/java_home)
+```
+
+Xong thì hãy reset lại Terminal hoặc reset cả máy lại thì càng tốt. Sau đó, bạn sang phần quan trọng hơn.
+
+Di chuyển tới thư mục `android` của project React Native mới tạo, để `gradlew clean`. Tất nhiên là `99.99%` sẽ tạch. Lúc này có search mù mắt cũng không ra. Thay vào đó làm theo các bước sau:
+
+* Mở Android Studio
+* Mở project android trong thư mục project React Native
+* Ngồi chờ cho Android tải & build xong Gradle. Nó rất là lâu, nên bạn hãy kiên nhẫn và tìm nới có mạng internet tốt nhất.
+* Sau khi đã xong hết thì mở Terminal lên và chạy lệnh `run-android` nhóe
+
+![009](../_img/009.png)
+
+Thành công thì sẽ ra như thế này.
+
 ---
 
 *(Chúc bạn một ngày tốt lành và cảm ơn bạn đã ghé thăm repo này.)*

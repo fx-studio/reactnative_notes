@@ -89,7 +89,192 @@ Ngoài ra, bạn sẽ còn một cách nữa là viết functional component, n�
 
 > Chúng ta sẽ tìm hiểu sau nhóe!
 
+## State
 
+**State** là loại dữ liệu tiếp theo tác động được lên Component. Với ý tưởng là mỗi component đều mang trong mình “trạng thái” (State), khi trạng thái thay đổi, giao diện được render lại theo trạng thái đó.
+
+> Giống với State ở SwiftUI
+
+Đặc trưng:
+
+* Giúp Component tự động cập nhật lại
+* Binding 2 chiều
+
+Còn đây là một ví dụ code khá đơn giản về áp dụng State nhóe.
+
+```js
+const NewApp = () => {
+
+    const [count, setCount] = useState(0);
+
+  return (
+    <View
+            style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}>
+            <TouchableOpacity
+                style={{
+                    alignItems: 'center',
+                    backgroundColor: '#DDDDDD',
+                    padding: 10,
+                    marginBottom: 10,
+                }}
+                onPress={ ()=> setCount(count + 1) }>
+                <Text>Tap me!</Text>
+      </TouchableOpacity>
+            <View>
+                <Text>You tapped {count} times.</Text>
+      </View>
+    </View>
+  );
+};
+```
+
+Nội dung của đoạn code là đếm số lần click vào Button mà thôi. Chi tiết code sau thì chúng ta tìm hiểu sau nhóe. Bạn cần chú ý 2 điểm là:
+
+* Việc hiển thị chỉ cần trỏ tới biến State
+* Việc thay đổi giá trị State chỉ là thay đổi giá trị, không cần quan tâm tới phải xét lại UI
+
+## Passing Data
+
+Mối quan tâm tiếp theo nữa mà bạn cần giải quyết là việc truyền dữ liệu. Ở các nền tảng native (iOS & Android) ta sẽ cần truyền dữ liệu giữa các màn hình hay objects. Còn với React Native chính là các Component.
+
+### Cha sang Con
+
+Đây là chiều đầu tiên và là đơn giản nhất. Ta chỉ cần tạo ra các parameter và truyền thôi.
+
+> Bạn cần nắm được cách tạo một Component với tham số cho props
+
+* **Component Con**
+
+```js
+const ChildComponent = ({counter}: {counter: number}) => {
+    return (
+        <View>
+            <Text style={{ color: "#000000", fontWeight: "bold", fontSize: 40, }}>Bộ đếm {counter}</Text>
+        </View>
+    )    
+};
+```
+
+* **Component Cha**
+
+```js
+const NewApp2 = () => {
+
+    const [count, setCount] = useState(0);
+
+    return (
+        <View style={styles.containerView}>
+            <TouchableOpacity
+                style={{
+                    alignItems: 'center',
+                    backgroundColor: '#DDDDDD',
+                    padding: 10,
+                    marginBottom: 10,
+                }}
+                onPress={ ()=> setCount(count + 1) }>
+                <Text>Tap me!</Text>
+            </TouchableOpacity>
+            <ChildComponent counter={count}></ChildComponent>
+        </View>
+  );
+};
+```
+
+Biến `count` từ Component Cha, gán giá trị đó cho tham số `counter` của Component Con.
+
+### Con sang Cha
+
+Chiều ngược lại thì chúng ta sử dụng `callback` hoặc `emit` một Event. Cũng lại là khá giống với.
+
+> Về bản chất cũng giống như bao ngôn ngữ khác có Callback.
+
+Nguyên tắc:
+
+* Định nghĩa function callback ở CHA
+* Đăng ký function đó từ CHA cho CON
+* Chú ý về mặt khai báo tham số và giá trị trả về
+* Tại CON, khi có sự thay đổi nào cần báo lại CHA thì sử dụng con trỏ đã trỏ tới function callback ở cha
+
+Ví dụ xem qua khai báo CON trước nha:
+
+```js
+const ChildComponent = ({counter, parentCallback}) => {
+
+    const [text, onChangeText] = useState("");
+
+    // call back
+    const send = () => { parentCallback(text); }
+
+    return (
+        <View style={styles.childView}>
+            <Text style={{ color: "#000000", fontWeight: "bold", fontSize: 20, }}>Bộ đếm {counter}</Text>
+            <Text style={{ color: "red",fontSize: 20, }}>Gửi cho Cha già</Text>
+            <TextInput value={text} placeholder="nhập vào đi" onChangeText={onChangeText} style={styles.textInput}/>
+            <TouchableOpacity style={styles.buttonSend} onPress={send}>
+                <Text style={{ color: "white"}}>Gửi</Text>
+            </TouchableOpacity>
+        </View>
+    )    
+};
+
+```
+
+Trong đó:
+
+* Thêm một TextInput để lấy giá trị người dùng nhập vào. Sau đó, xét cho biến `text`
+* Khai báo một function `send` cho sự kiện `onPress` của Component Button trong con
+
+Tại CHA ta cũng cần thêm một số code nữa.
+```js
+const NewApp2 = () => {
+
+    const [count, setCount] = useState(0);
+    
+    // call back
+    const [childrendContent, setChildrendContent] = useState(`Món quà từ con`);
+    const callbackFunction = (childData) => { setChildrendContent(childData) }
+
+    return (
+        <View style={styles.containerView}>
+            <Text style={{ color: "green", fontWeight: "bold", fontSize: 15, }}>Dữ liệu từ con: {childrendContent}</Text>
+            <TouchableOpacity
+                style={{
+                    alignItems: 'center',
+                    backgroundColor: '#DDDDDD',
+                    padding: 10,
+                    marginBottom: 10,
+                }}
+                onPress={ ()=> setCount(count + 1) }>
+                <Text>Tap me!</Text>
+            </TouchableOpacity>
+            <ChildComponent counter={count} parentCallback={callbackFunction}></ChildComponent>
+        </View>
+  );
+};
+```
+
+Trong đó:
+
+* `childrendContent` dùng để nhận dữ liệu từ con về và dùng để cập nhật cho Text
+* `callbackFunction` dùng là hàm để nhận sự kiện từ lớp Con trả về
+
+### Global Store
+
+Khi chúng ta có quá nhiều cấp cho các Components lồng nhau. Để truyền dữ liệu qua nhiều cấp như vậy ta có thể sử dụng tới một kho dùng chung (Global Store). Từ kho đó, ta tiến hành truy xuất hoặc đọc ghi dữ liệu.
+
+> Để quản lý kho đó, ta sử dụng React Redux
+
+Vấn đề quan trọng của kho, chính là khả năng UI sẽ phản hồi lại tự động khi có sự thay đổi giá trị dữ liệu. Và chúng ta sẽ tìm hiểu sau nhóe
+
+### Giữa các Components ở các Màn hình khác nhau
+
+Vấn đề này được giải quyết với React Navigation. Cũng là tìm hiểu sau.
+
+## Events
 
 ---
 

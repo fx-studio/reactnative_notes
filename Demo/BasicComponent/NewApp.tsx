@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import React, {useState} from 'react';
+import {Text, TouchableOpacity, View} from 'react-native';
 
 const NewApp = () => {
 
     const [count, setCount] = useState(0);
 
-    return(
-        <View
+  return (
+    <View
             style={{
                 flex: 1,
                 justifyContent: 'center',
                 alignItems: 'center'
-            }}>  
+            }}>
             {/*  <Text>Hello, world!</Text> */}
             <TouchableOpacity
                 style={{
@@ -23,13 +22,12 @@ const NewApp = () => {
                 }}
                 onPress={ ()=> setCount(count + 1) }>
                 <Text>Tap me!</Text>
-            </TouchableOpacity>
+      </TouchableOpacity>
             <View>
                 <Text>You tapped {count} times.</Text>
-            </View>
-
-        </View>
-    )
-}
+      </View>
+    </View>
+  );
+};
 
 export default NewApp;
