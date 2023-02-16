@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import MyComponent from "./MyComponent";
 
 const ChildComponent = ({counter, parentCallback}) => {
 
@@ -20,6 +21,13 @@ const ChildComponent = ({counter, parentCallback}) => {
     )    
 };
 
+function Welcome(props) {
+
+    return(
+      <Text>Hello, {props.name}</Text>  
+    );
+}
+
 const NewApp2 = () => {
 
     const [count, setCount] = useState(0);
@@ -30,6 +38,8 @@ const NewApp2 = () => {
 
     return (
         <View style={styles.containerView}>
+            <MyComponent name={"ABC"}/>
+            <Welcome name={"ABC2"} />
             <Text style={{ color: "green", fontWeight: "bold", fontSize: 15, }}>Dữ liệu từ con: {childrendContent}</Text>
             <TouchableOpacity
                 style={{
@@ -71,3 +81,5 @@ const styles = StyleSheet.create({
 });
 
 export default NewApp2;
+
+

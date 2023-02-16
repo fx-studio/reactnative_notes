@@ -5,7 +5,8 @@ Tập hợp các ghi chú cho quá trình nghiên cứu *React Native* và họ 
 
 1. [Cài đặt môi trường](./Notes/001_CaiDatMoiTruong.md) & [Hello world](./Notes/001_Helloworld.md)
 2. [Component](./Notes/002_Component.md)
-3. ...
+3. [Javascript Syntax](./Notes/003_JavascriptSyntax.md)
+4. ...
 
 ## Ghi chú
 
