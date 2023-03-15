@@ -8,7 +8,8 @@ Tập hợp các ghi chú cho quá trình nghiên cứu *React Native* và họ 
 3. [Javascript Syntax](./Notes/003_JavascriptSyntax.md)
 4. [Style & Flexbox](./Notes/004_Style_Flexbox.md)
 5. [React Redux](./Notes/005_React_Redux.md)
-6. ...
+6. [Redux Sagas](./Notes/006_Redux_Sagas.md)
+7. ...
 
 ## Ghi chú
 
