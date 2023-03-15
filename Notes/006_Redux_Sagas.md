@@ -719,7 +719,7 @@ Sagas là một Middleware giúp bạn xử lý các tác vụ bất đồng b�
 
 Bạn cần chú ý các function trong Saga, tùy thuộc vào mục đính bạn gọi mà hãy chọn function cho phù hợp.
 
-* `takeLastest` sẽ lấy action cuối cùng
+* `takeLatest` sẽ lấy action cuối cùng
 * `put` dùng để gọi các action không liên quan tới bất đồng bộ. Nó sẽ thực thi ngay
 * `call` dùng để gọi các xử lý bất đồng bộ, nó sẽ vào ngăn xếp và chờ để chạy
 
