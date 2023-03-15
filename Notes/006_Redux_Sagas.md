@@ -723,7 +723,9 @@ Bạn cần chú ý các function trong Saga, tùy thuộc vào mục đính b�
 * `put` dùng để gọi các action không liên quan tới bất đồng bộ. Nó sẽ thực thi ngay
 * `call` dùng để gọi các xử lý bất đồng bộ, nó sẽ vào ngăn xếp và chờ để chạy
 
-Do số lượng file phát khi khi kết hợp **React Redux** và **Redux Sagas**. Nên hãy phân chia bố cụ cấu trúc file hợp lý ngày tư đầu. Dùng thêm các thư viện khác như là **Redux tools kit** để quản lý tốt hơn. Vẫn phải thực hiện các việc theo thứ tự từ `cấu hình chung` > `cấu hình các reducer/saga` riêng lẻ > cập nhật logic > store > UI nhóe.
+Do số lượng file phát sinh khi kết hợp **React Redux** và **Redux Sagas**. Nên hãy phân chia bố cụ cấu trúc file hợp lý ngày tư đầu. Dùng thêm các thư viện khác như là **Redux tools kit** để quản lý tốt hơn. Vẫn phải thực hiện các việc theo thứ tự từ:
+
+> Cấu hình chung > Cấu hình các reducer/saga riêng lẻ > Cập nhật logic > Store > UI
 
 Cảm ơn bạn đã đọc!
 
